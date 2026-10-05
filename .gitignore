@@ -22,3 +22,6 @@ Desktop.ini
 
 # Logs and temporary audits
 logs/*.log
+
+# Runtime audit output - contains captured live traffic (tokens, cookies, credentials)
+telemetry_audit.jsonl

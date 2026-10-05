@@ -69,8 +69,11 @@ class TelemetryConfig:
         "malik_iqra04",
     }
 
-    # Sensitive key patterns in nested JSON / GraphQL schemas
+    # Meta AI 2.0 Core JSON keys to scan
     SENSITIVE_KEY_PATTERNS: List[re.Pattern] = [
+        re.compile(r"(?i)(user[_-]?id|uid|actor[_-]?id|meta[_-]?ai[_-]?id|thread[_-]?id)"),
+        re.compile(r"(?i)(prompt|context|model[_-]?response|llm[_-]?output|system[_-]?message)"),
+        re.compile(r"(?i)(session[_-]?token|auth[_-]?bearer|access[_-]?key|nonce)"),
         re.compile(r"(?i)(user[_-]?id|username|user_identifier)"),
         re.compile(r"(?i)(email|e[_-]?mail)"),
         re.compile(r"(?i)(phone|mobile|cell[_-]?phone)"),
@@ -102,8 +105,10 @@ class TelemetryConfig:
         "authorization", "proxy-authorization", "x-auth-token", "x-access-token", "x-session-token", "x-api-key"
     }
 
-    # Endpoints associated with conversational agents
+    # Meta AI dynamic assistant traffic targets
     ASSISTANT_ENDPOINTS: List[re.Pattern] = [
+        re.compile(r"(?i)/api/v\d+/meta_ai/.*"),
+        re.compile(r"(?i)/graphql.*(MetaAIBotQuery|LlamaContextStream|AIPlatformQuery)"),
         re.compile(r"(?i)/(api/)?v\d+/(chat|completions|agent|assistant|conversation|dialogue)"),
         re.compile(r"(?i)/graphql.*(prompt|assistant|botQuery)"),
     ]
