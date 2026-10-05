@@ -1,0 +1,24 @@
+# Large binary downloads and archives
+frida-server*
+*.xz
+*.zip
+rootAVD/
+rootAVD-master/
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.venv/
+venv/
+ENV/
+
+# OS and IDE files
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+
+# Logs and temporary audits
+logs/*.log
